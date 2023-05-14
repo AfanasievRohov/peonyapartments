@@ -1,0 +1,19 @@
+{
+  "name": "peonyapartments",
+  "version": "1.0.0",
+  "description": "This is cool real estate app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AfanasievRohov/peonyapartments.git"
+  },
+  "author": "S. Afanasiev and A. Rohov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AfanasievRohov/peonyapartments/issues"
+  },
+  "homepage": "https://github.com/AfanasievRohov/peonyapartments#readme"
+}
