@@ -1,5 +1,6 @@
-// const dotenv = require('dotenv'); Стас це тобі на підключення монго
-// const mongoose = require('mongoose'); Стас це тобі на підключення монго
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+const app = require('./app');
 
 process.on("uncaughtException", (err) => {
     //Uncaught Exeprions - problems in sync code a.k.a typos, non declare vars etc
@@ -7,19 +8,13 @@ process.on("uncaughtException", (err) => {
     process.exit(1);
 })
 
-// dotenv.config({path: './config.env'}); Стас це тобі на підключення монго
+dotenv.config({path: './config.env'});
 
-const app = require('./app');
+const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD)
 
-// mongoose.connect(process.env.DATABASE_LOCAL, { Стас це тобі на підключення монго
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useFindAndModify: false
-// }).then(() => {
-//     console.log("DB connection successful!")
-// });
+mongoose.connect(DB).then(() => console.log('CONNECTED TO DB SUCCESSFUL!'))
 
-const port = 8000; //process.env.PORT || 8000 Стас це тобі на підключення монго
+const port = process.env.PORT || 8000;
 
 
 const server = app.listen(port, () => {
