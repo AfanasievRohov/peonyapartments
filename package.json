@@ -17,8 +17,5 @@
   "bugs": {
     "url": "https://github.com/AfanasievRohov/peonyapartments/issues"
   },
-  "homepage": "https://github.com/AfanasievRohov/peonyapartments#readme",
-  "dependencies": {
-    "bcryptjs": "^2.4.3"
-  }
+  "homepage": "https://github.com/AfanasievRohov/peonyapartments#readme"
 }
