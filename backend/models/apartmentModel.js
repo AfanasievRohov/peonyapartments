@@ -25,10 +25,15 @@ const apartmentSchema = mongoose.Schema({
         type: Number,
         required: [true, "Apartament must have a rooms number"]
     },
-
+    availableUntil:{
+        type: Date
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now()
+    }
 });
 
 const Apartment = new mongoose.model("Apartment", apartmentSchema);
-
 
 module.exports = Apartment;
