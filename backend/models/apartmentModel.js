@@ -5,19 +5,23 @@ const apartmentSchema = mongoose.Schema({
         type: String,
         required: [true, "Apartament must have a address"]
     },
-    pets: {
+    isActive: {
         type: Boolean,
-        required: [true, "Apartament must have a pets field"]
+        required: [true, "Apartament must have a active field"]
     },
-    parking: {
+    isOccupied: {
         type: Boolean,
-        required: [true, "Apartament must have a parking field"]
+        required: [true, "Apartament must have a occupied field"]
     },
     floor: {
         type: Number,
         required: [true, "Apartament must have a floor field"]
     },
-    price: {
+    floorQty: {
+        type: Number,
+        required: [true, "Apartament must have a floor quantity field"]
+    },
+    priceMonth: {
         type: Number,
         required: [true, "Apartament must have a price"]
     },
@@ -25,13 +29,19 @@ const apartmentSchema = mongoose.Schema({
         type: Number,
         required: [true, "Apartament must have a rooms number"]
     },
-    availableUntil:{
-        type: Date
+    pets: {
+        type: Boolean,
     },
-    createdAt: {
-        type: Date,
-        default: Date.now()
-    }
+    parking: {
+        type: Boolean,
+    },
+    roomatesQty: {
+        type: Number
+    },
+    occupied: {
+        type: [Date]
+    },
+    photos: [String]
 });
 
 const Apartment = new mongoose.model("Apartment", apartmentSchema);
