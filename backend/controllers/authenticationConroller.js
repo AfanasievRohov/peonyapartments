@@ -38,3 +38,37 @@ exports.signup = catchAsync(async (req, res, next) => {
 
     createAndSendToken(newUser, 201, res);
 });
+
+exports.login = catchAsync(async (req, res, next) => {
+    //Get email and password from req.body to be sure both present
+    const {email, password} = req.body;
+
+    if(!email || !password) {
+        return next(new AppCustomError('Please provide email and password', 400));
+    }
+
+    //Find user with that email, and if it dosn't exist throw error
+    const user = await User.findOne({email}).select("+password");
+    let correctPassword = user ? await user.correctPassword(password, user.password) : null;
+
+    if(!user || !correctPassword) {
+        return next(new AppCustomError('Incorrect email or password', 401));
+    }
+
+    //Create and send token
+    createAndSendToken(user, 200, res);
+});
+
+exports.logout = (req, res, next) => {
+    const cookieOptions = {
+        expires: new Date(Date.now() + (10 * 1000)),
+        httpOnly: true
+    };
+
+    res.cookie("jwt", "logged out", cookieOptions);
+
+    res.status(200).json({
+        status: "succes",
+        data: null
+    });
+}
