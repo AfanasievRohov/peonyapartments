@@ -1,6 +1,9 @@
 const User = require('../models/userModel');
+const PhoneNumber = require('../models/phoneNumberModel');
+const { promisify } = require('util');
 const catchAsync = require('../utils/catchAsync');
 const jwt = require('jsonwebtoken');
+const CustomError = require('../utils/customError');
 
 const createAndSendToken = (user, statusCode, res) => {
     let token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {
@@ -27,6 +30,13 @@ const createAndSendToken = (user, statusCode, res) => {
 }
 
 exports.signup = catchAsync(async (req, res, next) => {
+    const candidatePhoneNumber = "+380" + req.body.phoneNum.slice(-9);
+    const canSignup = await PhoneNumber.find({phoneNumber: candidatePhoneNumber});
+
+    if(!canSignup.length) {
+        return next(new CustomError('You cannot login, please talk to administrator', 400));
+    }
+
     const newUser = await User.create({
         name: req.body.name,
         phoneNum: req.body.phoneNum,
@@ -44,7 +54,7 @@ exports.login = catchAsync(async (req, res, next) => {
     const {email, password} = req.body;
 
     if(!email || !password) {
-        return next(new AppCustomError('Please provide email and password', 400));
+        return next(new CustomError('Please provide email and password', 400));
     }
 
     //Find user with that email, and if it dosn't exist throw error
@@ -52,7 +62,7 @@ exports.login = catchAsync(async (req, res, next) => {
     let correctPassword = user ? await user.correctPassword(password, user.password) : null;
 
     if(!user || !correctPassword) {
-        return next(new AppCustomError('Incorrect email or password', 401));
+        return next(new CustomError('Incorrect email or password', 401));
     }
 
     //Create and send token
@@ -72,3 +82,44 @@ exports.logout = (req, res, next) => {
         data: null
     });
 }
+
+exports.protect = catchAsync(async (req, res, next) => {
+    //Getting token and check if exist
+    let token;
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+        token = req.headers.authorization.split(' ')[1];
+    } else if(req.cookies.jwt) {
+        token = req.cookies.jwt;
+    }
+    //Validate verification token with jwt module
+    if (!token) {
+        return next(new CustomError('You are not logged in, please log in to get access', 401))
+    }
+    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+    console.log(decoded)
+
+    //If Verified check if user still exist
+    const currentUser = await User.findById(decoded.id);
+    if(!currentUser) {
+        return next(new CustomError("The user belonging to this token does not longer exist", 401))
+    }
+
+    //Check if user changed password after jwt token was issued
+    if (currentUser.changedPasswordAfter(decoded.iat)) {
+        return next(new CustomError("User recently changed password. Please log", 401));
+    }
+
+    req.user = currentUser;
+    next();
+});
+
+exports.restrictTo = (...roles) => {
+    return (req, res, next) => {
+
+        if (!roles.includes(req.user.role)) {
+            return next(new CustomError("You do not have permission to perform this action", 403))
+        }
+
+        next()
+    }
+};

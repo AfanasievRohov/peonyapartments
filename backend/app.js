@@ -1,6 +1,7 @@
 const express = require('express');
 
 const userRouter = require('./routes/userRoutes');
+const administrationRouter = require('./routes/administrationRoutes')
 const CustomError = require('./utils/customError');
 const globalErrorHandler = require('./controllers/errorController');
 
@@ -17,6 +18,8 @@ app.get('/api', (req, res, next) => {
 
 
 app.use('/api/users', userRouter);
+
+app.use('/api/administration', administrationRouter);
 
 app.all('*', (req, res, next) => {
     const err = new CustomError(`C'ant find ${req.originalUrl} on this server`, 404);
