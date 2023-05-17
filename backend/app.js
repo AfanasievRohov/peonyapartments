@@ -1,9 +1,9 @@
 const express = require('express');
 
 // Routers
-const apartmentsRouter = require('./routes/apartmentsRouter');
+const apartmentsRouter = require('./routes/apartmentsRoutes');
 const userRouter = require('./routes/userRoutes');
-const administrationRouter = require('./routes/administrationRoutes')
+const administrationRouter = require('./routes/administrationRoutes');
 const CustomError = require('./utils/customError');
 const globalErrorHandler = require('./controllers/errorController');
 
@@ -12,6 +12,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 
+//Added only for test, can be deleted when front end created
 app.get('/api', (req, res, next) => {
     res.status(200).json({
         status: "success",
