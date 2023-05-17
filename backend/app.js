@@ -1,5 +1,7 @@
 const express = require('express');
 
+// Routers
+const apartmentsRouter = require('./routes/apartmentsRouter');
 const userRouter = require('./routes/userRoutes');
 const administrationRouter = require('./routes/administrationRoutes')
 const CustomError = require('./utils/customError');
@@ -7,7 +9,8 @@ const globalErrorHandler = require('./controllers/errorController');
 
 const app = express();
 
-app.use(express.json())
+// Middleware
+app.use(express.json());
 
 app.get('/api', (req, res, next) => {
     res.status(200).json({
@@ -16,6 +19,7 @@ app.get('/api', (req, res, next) => {
     })
 });
 
+app.use('/api/apartments', apartmentsRouter);
 
 app.use('/api/users', userRouter);
 
