@@ -98,7 +98,6 @@ exports.protect = catchAsync(async (req, res, next) => {
         return next(new CustomError('You are not logged in, please log in to get access', 401))
     }
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-    console.log(decoded)
 
     //If Verified check if user still exist
     const currentUser = await User.findById(decoded.id);
@@ -158,7 +157,6 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
 
 exports.resetPassword = catchAsync(async (req, res, next) => {
-    console.log(req.params);
     //1) get user based on the token
     const hashedToken = crypto
     .createHash('sha256')
@@ -169,7 +167,6 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
         passwordResetToken: hashedToken,
         passwordResetExpires: { $gt: Date.now() }
     })
-    console.log(hashedToken);
 
     //2) if token has not expired and there is the user - set the password
     if (!user) {
@@ -183,5 +180,21 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     //3) update changed pass
 
     //4) log the user in, send JWT
+    createAndSendToken(user, 200, res)
+})
+
+exports.updatePassword = catchAsync(async (req, res, next) => {
+    //1) get user from the collection
+    const user = await User.findById(req.user.id).select('+password') // "+" is to get password visible
+
+    //2) check if posted password is correct
+    if (!(await user.correctPassword(req.body.passwordCurrent, user.password))) {
+        return next(new CustomError('Password is incorrect', 401))
+    }
+    //3) update the password
+    user.password = req.body.password
+    user.passwordConfirm = req.body.passwordConfirm
+    await user.save()
+    //4) log in user, send JWT
     createAndSendToken(user, 200, res)
 })
