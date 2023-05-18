@@ -4,7 +4,7 @@ const express = require('express');
 const apartmentsRouter = require('./routes/apartmentsRoutes');
 const userRouter = require('./routes/userRoutes');
 const administrationRouter = require('./routes/administrationRoutes');
-const customersRouter = require('./routes/customersRoutes');
+const customersNotesRouter = require('./routes/customersNotesRoutes');
 
 const CustomError = require('./utils/customError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -26,7 +26,7 @@ app.use('/api/apartments', apartmentsRouter);
 
 app.use('/api/users', userRouter);
 
-app.use('/api/customers', customersRouter)
+app.use('/api/customers', customersNotesRouter)
 
 app.use('/api/administration', administrationRouter);
 
