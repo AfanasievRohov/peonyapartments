@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/AfanasievRohov/peonyapartments/issues"
   },
-  "homepage": "https://github.com/AfanasievRohov/peonyapartments#readme"
+  "homepage": "https://github.com/AfanasievRohov/peonyapartments#readme",
+  "dependencies": {
+    "nodemailer": "^6.9.2"
+  }
 }

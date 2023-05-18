@@ -13,4 +13,7 @@ router.route('/login')
 router.route('/logout')
     .post(authenticationConroller.logout);
 
+router.post('/forgotPassword', authenticationConroller.forgotPassword)
+router.patch('/resetPassword/:token', authenticationConroller.resetPassword)
+
 module.exports = router;

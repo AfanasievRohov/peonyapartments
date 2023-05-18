@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const crypto = require('crypto')
 const bcrypt = require('bcryptjs');
 // const validator = require("validator"); maybe will use this package on email validation
 
@@ -42,7 +43,13 @@ const userSchema = new mongoose.Schema({
     },
     passwordsChangedAt: {
         type: Date
-    }
+    },
+    photo: {
+        type: String,
+        default: './frontend/public/users/default.jpg'
+    },
+    passwordResetToken: String,
+    passwordResetExpires: Date,
 });
 
 //Query middleware
@@ -76,6 +83,21 @@ userSchema.methods.changedPasswordAfter = function (timeStampJWT) {
 
     return false;
 };
+
+userSchema.methods.createPasswordResetToken = function () {
+    const resetToken = crypto.randomBytes(32).toString('hex')
+
+    this.passwordResetToken = crypto
+        .createHash('sha256')
+        .update(resetToken)
+        .digest('hex')
+
+   // console.log({ resetToken }, this.passwordResetToken)
+
+    this.passwordResetExpires = Date.now() + 10 * 60 * 1000
+
+    return resetToken
+}
 
 const User = new mongoose.model("User", userSchema);
 
