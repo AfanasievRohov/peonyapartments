@@ -1,8 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
+import Logout from './Logout';
+import { useGlobalContext } from './AppContext';
 
 function TestComponent() {
     let [heading, setHeading] = useState(null);
+    const user = useGlobalContext();
+    console.log(user)
 
     React.useEffect(() => {
         const getData = async () => {
@@ -17,6 +21,7 @@ function TestComponent() {
     return (
         <h1>
             {heading && heading.data}
+        <Logout />
         </h1>
     )
 }

@@ -8,6 +8,15 @@ export default defineConfig({
       "/api": {
         target: "http://localhost:8000",
         secure: false,
+        configure: (proxy, options) => {
+          proxy.on('proxyReq', (proxyReq, req, res) => {
+            if (!req.headers.cookie) {
+              return;
+            }
+            console.log('req.headers.cookie', req.headers.cookie)
+            proxyReq.setHeader('cookie', req.headers.cookie);
+          });
+        },
       },
     },
   },

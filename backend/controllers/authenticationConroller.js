@@ -86,11 +86,15 @@ exports.logout = (req, res, next) => {
 exports.protect = catchAsync(async (req, res, next) => {
     //Getting token and check if exist
     let token;
+    console.log(req.headers.cookie)
+    console.log(req.headers.cookie.jwt)
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         token = req.headers.authorization.split(' ')[1];
-    } else if (req.cookies && req.cookies.jwt) {
-        token = req.cookies.jwt;
+    } else if (req.headers.cookie && req.headers.cookie) {
+        token = req.headers.cookie.split('=')[1];
     }
+    console.log(token)
+
     //Validate verification token with jwt module
     if (!token) {
         return next(new CustomError('You are not logged in, please log in to get access', 401))
