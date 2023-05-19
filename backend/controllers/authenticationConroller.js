@@ -110,6 +110,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     }
 
     req.user = currentUser;
+    console.log(currentUser);//Needed for later development
     next();
 });
 
