@@ -4,8 +4,8 @@
   "description": "This is cool real estate app",
   "main": "index.js",
   "scripts": {
-    "start:fe": "cd frontend && npm run dev",
-    "start:be": "cd backend && npm start",
+    "front": "cd frontend && npm run dev",
+    "back": "cd backend && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,8 +17,5 @@
   "bugs": {
     "url": "https://github.com/AfanasievRohov/peonyapartments/issues"
   },
-  "homepage": "https://github.com/AfanasievRohov/peonyapartments#readme",
-  "dependencies": {
-    "nodemailer": "^6.9.2"
-  }
+  "homepage": "https://github.com/AfanasievRohov/peonyapartments#readme"
 }
