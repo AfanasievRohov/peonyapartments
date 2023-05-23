@@ -13,7 +13,7 @@ export default defineConfig({
             if (!req.headers.cookie) {
               return;
             }
-            console.log('req.headers.cookie', req.headers.cookie)
+            // console.log('req.headers.cookie', req.headers.cookie)
             proxyReq.setHeader('cookie', req.headers.cookie);
           });
         },

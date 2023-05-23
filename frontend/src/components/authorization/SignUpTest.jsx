@@ -1,7 +1,10 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { changePage } from '../../features/pages/pagesSlice';
 
 function SignUpTest() {
+    const dispatch = useDispatch();
     const [data, setData] = useState(false);
     const refForm = useRef(null);
 
@@ -30,6 +33,7 @@ function SignUpTest() {
 
     return (
     <div>
+    <button onClick={() => dispatch(changePage("main"))}>Back to main page</button>
     {data && <p>success</p>}
         <form onSubmit={handleSubmit} ref={refForm}>
             <label htmlFor="name">Name</label>

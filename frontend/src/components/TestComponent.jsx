@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import Logout from './authorization/Logout';
 
 function TestComponent() {
     let [heading, setHeading] = useState(null);
@@ -17,6 +18,7 @@ function TestComponent() {
     return (
         <h1>
             {heading && heading.data}
+            <Logout />
         </h1>
     )
 }
