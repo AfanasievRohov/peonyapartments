@@ -6,9 +6,7 @@ exports.getAll = catchAsync(async (req, res) => {
 
     res.status(200).json({
         error: false,
-        data: {
-            apartments
-        }
+        data: apartments
     });
 });
 

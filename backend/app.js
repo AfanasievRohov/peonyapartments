@@ -24,7 +24,7 @@ app.get('/api', (req, res, next) => {
 
 const authenticationConroller = require('./controllers/authenticationConroller');
 
-app.use('/api/isLogedIn',authenticationConroller.protect, (req,res,next) => {
+app.use('/api/isLogedIn', authenticationConroller.protect, (req,res,next) => {
     res.status(200).json({user: req.user});
 });
 

@@ -1,12 +1,10 @@
 import React from 'react';
 import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { changePage } from '../../features/pages/pagesSlice';
-
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-    const dispatch = useDispatch();
     const refForm = useRef(null);
+    const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -24,7 +22,7 @@ function Login() {
 
         if (response.ok) {
             refForm.current.reset();
-            location.reload()
+            navigate('/')
         } else {
             console.log(response)
         }
@@ -32,7 +30,7 @@ function Login() {
 
 return (
     <div>
-        <button onClick={() => dispatch(changePage("main"))}>Back to main page</button>
+        <button onClick={() => navigate('/')}>Back to main page</button>
         <h1>Login page</h1>
         <form onSubmit={handleSubmit} ref={refForm}>
         <label htmlFor="email">Email</label>

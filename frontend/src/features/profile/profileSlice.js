@@ -17,7 +17,7 @@ export const getProfile = createAsyncThunk(
 
         return resp.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue('something went wrong');
+            return thunkAPI.rejectWithValue('You are not loggd in');
         }
     }
 );
