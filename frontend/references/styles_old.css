@@ -1,0 +1,257 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    
+    max-width: 1000px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 20%;
+    background-color: #F1F3F4;
+    border: 4px solid #ADB4BB;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.sidebar-line {
+    border: none;
+    border-top: 1px solid #ADB4BB;
+}
+
+.sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.sidebar-menu-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #343B48;
+    font-weight: bold;
+}
+
+.sidebar-menu-item.active {
+    color: #081226;
+}
+
+.sidebar-icon {
+    margin-right: 10px;
+}
+
+.user-block {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.user-info {
+    margin-right: 10px;
+}
+
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #B8E1A3;
+    border-radius: 50%;
+}
+
+/* Header Styles */
+.header {
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+    flex-grow: 1;
+}
+
+.header-dropdown {
+    position: relative;
+}
+
+.dropdown {
+    height: 50px;
+    width: 431px;
+    border-radius: 50px;
+    border: 3px solid #343B48;
+    background-color: #E2E6E7;
+    padding: 0 20px;
+    font-size: 16px;
+    appearance: none;
+}
+
+.header-status {
+    display: flex;
+    margin-right: 20px;
+}
+
+.header-status-item {
+    margin-right: 20px;
+    text-align: center;
+}
+
+.header-status-number {
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.header-status-text {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.header-buttons button {
+    background-color: #081226;
+    color: #FFFFFF;
+    font-size: 24px;
+    border-radius: 100px;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.header-buttons button:hover {
+    background-color: #343B48;
+}
+
+/* Dashboard Styles */
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.tile {
+    width: 33%;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    filter: drop-shadow(-3px 4px 20px rgba(0, 0, 0, 0.25));
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.tile-field {
+    font-size: 19px;
+    color: #343B48;
+    margin-bottom: 10px;
+}
+
+.tile-number {
+    font-weight: bold;
+    font-size: 19px;
+    color: #343B48;
+    margin-bottom: 10px;
+}
+
+.tile-indicator {
+    font-weight: bold;
+    font-size: 19px;
+    color: #343B48;
+    margin-bottom: 10px;
+}
+
+.available {
+    color: #22AB16;
+}
+
+.occupied {
+    color: #E33939;
+}
+
+.details-button {
+    background-color: #081226;
+    color: #FEFDFF;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.details-button:hover {
+    background-color: #343B48;
+    color: #FEFDFF;
+}
+
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.page-indicators {
+    display: flex;
+    margin: 0 10px;
+}
+
+.page-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #979797;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.page-indicator.active {
+    background-color: #D9D9D9;
+}
+
+.prev-button,
+.next-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .header {
+        margin: 0;
+        margin-top: 20px;
+    }
+
+    .dashboard {
+        margin: 0;
+        margin-top: 20px;
+    }
+
+    .tile {
+        width: 100%;
+    }
+
+    .pagination {
+        margin: 0;
+        margin-top: 20px;
+    }
+}
