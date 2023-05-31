@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema({
     },
     photo: {
         type: String,
-        default: './frontend/public/users/default.jpg'
+        default: './users/default.jpg'
     },
     passwordResetToken: String,
     passwordResetExpires: Date,

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,7 +29,7 @@ function Login() {
 
 return (
     <div>
-        <button onClick={() => navigate('/')}>Back to main page</button>
+        <button onClick={() => navigate('/main')}>Back to main page</button>
         <h1>Login page</h1>
         <form onSubmit={handleSubmit} ref={refForm}>
         <label htmlFor="email">Email</label>

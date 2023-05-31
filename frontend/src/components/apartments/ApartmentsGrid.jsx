@@ -2,7 +2,13 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllApartments } from '../../features/apartments/apartmentsSlice';
 import Apartment from './Apartment';
+import styled from 'styled-components';
 
+
+const ApartmentSection = styled.section`
+    display: flex;
+    flex-wrap: wrap
+`
 
 function ApartmentsGrid() {
     const dispatch = useDispatch();
@@ -17,9 +23,9 @@ function ApartmentsGrid() {
     }
 
     return (
-        <section>
+        <ApartmentSection>
             {apartments.map((elem, index) => <Apartment key={elem._id} index={index + 1} {...elem} />)}
-        </section>
+        </ApartmentSection>
     )
 }
 

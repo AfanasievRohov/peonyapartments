@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { getProfile } from './features/profile/profileSlice';
 
-import TestComponent from './components/TestComponent';
+import DashboardMain from './components/dashboard/DashboardMain';
 import MainPage from './components/mainPage/MainPage';
-import ApartmentsGrid from './components/apartments/ApartmentsGrid';
+import { Navigate } from 'react-router-dom';
 
 function App() {
   const dispatch = useDispatch();
@@ -24,10 +24,7 @@ function App() {
   }
 
   return (
-    <>
-      <TestComponent />
-      <ApartmentsGrid />
-    </>
+    <Navigate replace to={'/dashboard'} />
   )
 }
 

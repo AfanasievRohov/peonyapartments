@@ -1,6 +1,10 @@
-import React from 'react'
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import {logout} from '../../features/profile/profileSlice'
 
 function Logout() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const handleLogout = async(event) => {
         event.preventDefault();
 
@@ -13,7 +17,9 @@ function Logout() {
         });
 
         if (response.ok) {
-            location.reload()
+            dispatch(logout());
+
+            navigate('/')
         } else {
             console.log(response)
         }
