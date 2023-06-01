@@ -10,7 +10,7 @@ const customersNotesSchema = mongoose.Schema({
     },
     phoneNumber: {
         type: String,
-        unique: true,
+        //unique: true, ?should it be unique here  or not ? 🤔
         required: [true, "Please provide phone number"],
         minlength: [10, "Phone number should be at least 10 characters long"],
         maxlength: [13, "Phone number should less than 13 characters long"],

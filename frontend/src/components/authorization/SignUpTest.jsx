@@ -19,7 +19,7 @@ function SignUpTest() {
             method: "POST",
             body: JSON.stringify(data)
         });
-        
+
         if (response.ok) {
             setData(true);
             refForm.current.reset();
@@ -32,7 +32,7 @@ function SignUpTest() {
 
     return (
     <div>
-    <button onClick={() => navigate("/main")}>Back to main page</button>
+    <button onClick={() => navigate("/")}>Back to main page</button>
     {data && <p>success</p>}
         <form onSubmit={handleSubmit} ref={refForm}>
             <label htmlFor="name">Name</label>

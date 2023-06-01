@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
+// import './index.css'
+import './main.css'
 import store from './store';
 import { Provider } from 'react-redux';
 import MainRouter from './components/navigation/MainRouter.jsx';

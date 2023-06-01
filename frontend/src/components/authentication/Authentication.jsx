@@ -8,7 +8,6 @@ function Authentication({ children }) {
     let { profile, isLoading } = useSelector(state => state.profile);
 
     useEffect(()=> {
-        isLoading = true;
         dispatch(getProfile())
     }, []);
 

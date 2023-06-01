@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import App from '../../App';
+import App from '../App';
 import Login from '../authorization/Login';
 import SignUpTest from '../authorization/SignUpTest';
 import Authentication from '../authentication/Authentication';
 import DashboardMain from '../dashboard/DashboardMain';
 import ApartmentsGrid from '../apartments/ApartmentsGrid';
+import Customers from '../customers/Customers';
 
 function MainRouter() {
     return (
@@ -23,7 +24,7 @@ function MainRouter() {
                 <Route path='/dashboard-customers' element={
                 <Authentication>
                     <DashboardMain>
-                        <p>Customers</p>
+                        <Customers />
                     </DashboardMain>
                 </Authentication>
                 } />

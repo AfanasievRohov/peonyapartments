@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./scss/main.css" />
+    <title>Admin Panel</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <aside class="sidebar">
+        <div class="sidebar__container">
+          <div class="sidebar__logo logo">
+            <img src="./images/logo.png" alt="" />
+          </div>
+          <div class="sidebar__line"></div>
+          <ul class="sidebar__menu">
+            <li class="sidebar__menu-item active">
+              <div class="sidebar__menu-icon">
+                <img
+                  src="./images/apartments.svg"
+                  class="sidebar__menu-icon-svg"
+                  alt=""
+                />
+              </div>
+              <div class="sidebar__menu-item-title">
+                <a href="#">Apartments</a>
+              </div>
+            </li>
+            <li class="sidebar__menu-item">
+              <div class="sidebar__menu-icon">
+                <img
+                  src="./images/customers.svg"
+                  class="sidebar__menu-icon-svg"
+                  alt=""
+                />
+              </div>
+              <div class="sidebar__menu-item-title">
+                <a href="#">Customers</a>
+              </div>
+            </li>
+            <li class="sidebar__menu-item">
+              <div class="sidebar__menu-icon">
+                <img
+                  src="./images/map.svg"
+                  class="sidebar__menu-icon-svg"
+                  alt=""
+                />
+              </div>
+              <div class="sidebar__menu-item-title">
+                <a href="#">Map</a>
+              </div>
+            </li>
+            <li class="sidebar__menu-item">
+              <div class="sidebar__menu-icon">
+                <img
+                  src="./images/users.svg"
+                  class="sidebar__menu-icon-svg"
+                  alt=""
+                />
+              </div>
+              <div class="sidebar__menu-item-title">
+                <a href="#">Users</a>
+              </div>
+            </li>
+            <li class="sidebar__menu-item">
+              <div class="sidebar__menu-icon">
+                <img
+                  src="./images/deleted.svg"
+                  class="sidebar__menu-icon-svg"
+                  alt=""
+                />
+              </div>
+              <div class="sidebar__menu-item-title">
+                <a href="#">Deleted 
+                    apartments</a>
+              </div>
+            </li>
+            <li class="sidebar__menu-item">
+              <div class="sidebar__menu-icon">
+                <img
+                  src="./images/addApp.svg"
+                  class="sidebar__menu-icon-svg"
+                  alt=""
+                />
+              </div>
+              <div class="sidebar__menu-item-title">
+                <a href="#">Add apartment</a>
+              </div>
+            </li>
+            <li class="sidebar__menu-item">
+              <div class="sidebar__menu-icon">
+                <img
+                  src="./images/usersList.svg"
+                  class="sidebar__menu-icon-svg"
+                  alt=""
+                />
+              </div>
+              <div class="sidebar__menu-item-title">
+                <a href="#">Users list</a>
+              </div>
+            </li>
+          </ul>
+          <div class="sidebar__user-block ">
+              <div class="user-name">Hello, Admin</div>
+              <div class="user-photo">
+                <img src="./images/selfie.jpg" alt="">
+              </div>
+              <div class="user-phone">+38 095 777 77 77</div>
+          </div>
+        </div>
+      </aside>
+      <div class="content">
+        <header class="header">
+          <div class="header-dropdown">
+            <select class="dropdown">
+              <option value="all-apartments">All Apartments</option>
+              <option value="occupied-apartments">Occupied Apartments</option>
+              <option value="free-apartments">Free Apartments</option>
+              <option value="stuck-units">Stuck Units</option>
+            </select>
+          </div>
+          <div class="header-status">
+            <div class="header-status-item">
+              <span class="header-status-number">15</span>
+              <span class="header-status-text">Total</span>
+            </div>
+            <div class="header-status-item">
+              <span class="header-status-number">13</span>
+              <span class="header-status-text">Available</span>
+            </div>
+            <div class="header-status-item">
+              <span class="header-status-number">2</span>
+              <span class="header-status-text">Occupied</span>
+            </div>
+          </div>
+          <div class="header-buttons">
+            <button class="profile-button">Profile</button>
+            <button class="logout-button">Log out</button>
+          </div>
+        </header>
+        <div class="dashboard">
+          <div class="tile">
+            <div class="tile-number">1</div>
+            <div class="tile-indicator available">Available</div>
+            <div class="tile-field">Address: Шевченка, б. 4, кв. 178</div>
+            <div class="tile-field">Floor: 4/9</div>
+            <div class="tile-field">Rooms: 2</div>
+            <div class="tile-field">Price: $200</div>
+            <div class="tile-field">Pets: Not allowed</div>
+            <div class="tile-field">Available until: 18.05.2023</div>
+            <button class="details-button">DETAILS</button>
+          </div>
+          <!-- Repeat the tile section for other tiles -->
+
+          <div class="pagination">
+            <button class="prev-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="#343B48"
+                  d="M16 3a1 1 0 0 1 1 1v4.586l2.293-2.293a.999.999 0 1 1 1.414 1.414l-4 4a.999.999 0 0 1-1.414 0l-4-4a.999.999 0 0 1 1.414-1.414L15 8.586V4a1 1 0 0 1 1-1zm4 14H4v2h16v-2zm0-4H4v2h16v-2zm0-4H4v2h16V9zm0-4H4v2h16V5z"
+                />
+              </svg>
+            </button>
+            <div class="page-indicators">
+              <div class="page-indicator active">1</div>
+              <div class="page-indicator">2</div>
+              <!-- Add more page indicators as required -->
+            </div>
+            <button class="next-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="#343B48"
+                  d="M8 3a1 1 0 0 0-1 1v4.586L4.293 6.293a.999.999 0 1 0-1.414 1.414l4 4a.999.999 0 0 0 1.414 0l4-4a.999.999 0 0 0-1.414-1.414L9 8.586V4a1 1 0 0 0-1-1zm-4 14h16v2H4v-2zm0-4h16v2H4v-2zm0-4h16v2H4V9zm0-4h16v2H4V5z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="dropdown.js"></script>
+  </body>
+</html>
