@@ -3,7 +3,7 @@ import axios from "axios";
 
 const initialState = {
     customers: [],
-    isUpdated: false
+    isUpdatedField: false
 };
 
 export const getAllCustomers = createAsyncThunk(
@@ -61,8 +61,8 @@ const customersSlice = createSlice({
     name: "customers",
     initialState,
     reducers: {
-        fieldUpdated: (state, action) => {
-            state.isUpdated = true;
+        resetUpdatedField: (state, action) => {
+            state.isUpdatedField = false;
         }
         // logout: (state, action) => {
         //     state.profile = null;
@@ -86,7 +86,7 @@ const customersSlice = createSlice({
         })
         .addCase(updateCustomerNote.fulfilled, (state, action) => {
             console.log(action)
-            state.isUpdated = false;
+            state.isUpdatedField = true;
             state.isUpdating = false;
         })
         .addCase(updateCustomerNote.rejected, (state, action) => {
@@ -106,7 +106,7 @@ const customersSlice = createSlice({
     }
 });
 
-export const {fieldUpdated} = customersSlice.actions;
+export const {resetUpdatedField} = customersSlice.actions;
 
 
 export default customersSlice.reducer;

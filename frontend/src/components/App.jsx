@@ -11,20 +11,14 @@ function App() {
   const { profile, isLoading } = useSelector(state => state.profile);
 
   useEffect(()=> {
-    dispatch(getProfile())
+    dispatch(getProfile());
   }, []);
 
   if (isLoading === true) {
-    return <h1>Loading...</h1>
+    return <h1>Loading...</h1>;
   }
 
-  if (!profile) {
-    return <MainPage />
-  }
-
-  return (
-    <Navigate replace to={'/dashboard'} />
-  )
+  return !profile ? <MainPage /> : <Navigate replace to={'/dashboard'} />;
 }
 
 export default App

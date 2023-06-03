@@ -46,6 +46,7 @@ exports.signup = catchAsync(async (req, res, next) => {
         email: req.body.email,
         password: req.body.password,
         passwordConfirm: req.body.passwordConfirm,
+        workspace: canSignup[0].workspace
     });
 
     createAndSendToken(newUser, 201, res);

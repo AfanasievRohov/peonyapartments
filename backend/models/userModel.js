@@ -4,6 +4,11 @@ const bcrypt = require('bcryptjs');
 // const validator = require("validator"); maybe will use this package on email validation
 
 const userSchema = new mongoose.Schema({
+    workspace: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: [true, "Admin Id should provide workspace"]
+    },
     phoneNum: {
         type: String,
         required: [true, "A user must have a phone number"],

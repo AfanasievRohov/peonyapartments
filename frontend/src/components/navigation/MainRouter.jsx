@@ -6,6 +6,8 @@ import Authentication from '../authentication/Authentication';
 import DashboardMain from '../dashboard/DashboardMain';
 import ApartmentsGrid from '../apartments/ApartmentsGrid';
 import Customers from '../customers/Customers';
+import Users from '../users/Users';
+import ApartmentAddForm from '../apartments/ApartmentAddForm';
 
 function MainRouter() {
     return (
@@ -52,14 +54,14 @@ function MainRouter() {
                 <Route path='/dashboard-add-apatment' element={
                 <Authentication>
                     <DashboardMain>
-                        <p>add-apatment</p>
+                        <ApartmentAddForm />
                     </DashboardMain>
                 </Authentication>
                 } />
                 <Route path='/dashboard-user-list' element={
                 <Authentication>
                     <DashboardMain>
-                        <p>user-list</p>
+                        <Users />
                     </DashboardMain>
                 </Authentication>
                 } />

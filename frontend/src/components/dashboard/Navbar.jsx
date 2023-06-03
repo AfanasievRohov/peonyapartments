@@ -23,7 +23,10 @@ function Navbar() {
                     </div>
                     <div className="sidebar__line"></div>
                     <ul className="sidebar__menu">
-                        {menu.map((elem, index) => <NavbarListComponent key={index} activeMenu={activeMenu} menuHandler={menuHandler} {...elem} />)}
+                        {menu.map((elem, index) => {
+                            if (elem.adminOnly && profile.user.role != "admin") return;
+                            return <NavbarListComponent key={index} activeMenu={activeMenu} menuHandler={menuHandler} {...elem} />
+                        })}
                     </ul>
                     <div className="sidebar__user-block ">
                     <div className="user-name">Hello, {profile.user.name}</div>

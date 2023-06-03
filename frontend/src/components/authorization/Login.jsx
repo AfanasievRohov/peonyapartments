@@ -28,7 +28,7 @@ function Login() {
     }
 
 return (
-    <div>
+    <div className="wrapper">
         <button onClick={() => navigate('/')}>Back to main page</button>
         <h1>Login page</h1>
         <form onSubmit={handleSubmit} ref={refForm}>

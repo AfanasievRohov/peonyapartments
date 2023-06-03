@@ -2,7 +2,8 @@ const Apartment = require('../models/apartmentModel');
 const catchAsync = require('../utils/catchAsync');
 
 exports.getAll = catchAsync(async (req, res) => {
-    const apartments = await Apartment.find();
+    const workspace = req.user.role === "admin" ? req.user._id : req.user.workspace;
+    const apartments = await Apartment.find({workspace});
 
     res.status(200).json({
         error: false,
@@ -34,6 +35,7 @@ exports.deleteOneApartment = catchAsync(async (req, res) => {
 });
 
 exports.addNewApartment = catchAsync(async (req, res) => {
+    req.body.workspace = req.user._id;
     const newApartment = await Apartment.create(req.body);
 
     res.status(201).json({
