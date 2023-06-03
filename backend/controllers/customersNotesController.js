@@ -19,7 +19,8 @@ exports.createOne = catchAsync(async(req, res, next) => {
     })
 });
 exports.updateOne = catchAsync(async(req, res, next) => {
-    const updatedCustomerNote = await CustomersNotes.findByIdAndUpdate(req.query.id, req.body, {
+    const id = req.query.id || req.body._id;
+    const updatedCustomerNote = await CustomersNotes.findByIdAndUpdate(id, req.body, {
         new: true,
         runValidators: true
     });
@@ -30,7 +31,8 @@ exports.updateOne = catchAsync(async(req, res, next) => {
     })
 });
 exports.deleteOne = catchAsync(async(req, res, next) => {
-    const deletedCustomerNote = await CustomersNotes.findByIdAndDelete(req.query.id);
+    const id = req.query.id || req.body._id;
+    const deletedCustomerNote = await CustomersNotes.findByIdAndDelete(id);
 
     res.status(204).json({
         status: "success",

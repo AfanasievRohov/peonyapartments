@@ -10,6 +10,11 @@ const phoneNumberSchema = mongoose.Schema({
         set: (val) => {
             return (val.length < 10) ? "error" : "+380" + val.slice(-9);
         }
+    },
+    workspace: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: [true, "Admin Id should provide workspace"]
     }
 });
 

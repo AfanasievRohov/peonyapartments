@@ -46,6 +46,7 @@ exports.signup = catchAsync(async (req, res, next) => {
         email: req.body.email,
         password: req.body.password,
         passwordConfirm: req.body.passwordConfirm,
+        workspace: canSignup[0].workspace
     });
 
     createAndSendToken(newUser, 201, res);
@@ -90,8 +91,8 @@ exports.protect = catchAsync(async (req, res, next) => {
     let token;
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         token = req.headers.authorization.split(' ')[1];
-    } else if (req.cookies && req.cookies.jwt) {
-        token = req.cookies.jwt;
+    } else if (req.headers.cookie && req.headers.cookie) {
+        token = req.headers.cookie.split('=')[1];
     }
     //Validate verification token with jwt module
     if (!token) {

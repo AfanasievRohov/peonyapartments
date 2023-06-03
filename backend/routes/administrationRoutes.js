@@ -7,10 +7,9 @@ const router = express.Router();
 
 router.use(authenticationConroller.protect, authenticationConroller.restrictTo("admin"));
 
-router.route('/addSignupPhoneNumber')
-    .post(administrationController.addPhoneNumber);
-
-router.route('/deleteSignupPhoneNumber')
+router.route('/signupPhoneNumbers')
+    .get(administrationController.getAllPhoneNumbers)
+    .post(administrationController.addPhoneNumber)
     .delete(administrationController.deletePhoneNumber);
 
 module.exports = router;

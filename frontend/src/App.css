@@ -40,3 +40,24 @@
 .read-the-docs {
   color: #888;
 }
+
+
+/* Custom styles */
+
+/* .apartment-block {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  margin: 2rem;
+  padding: 2rem;
+  border-radius: 2.5%;
+  align-items: center;
+
+} */
+
+.apartment-block div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}

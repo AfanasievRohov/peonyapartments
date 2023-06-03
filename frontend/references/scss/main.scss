@@ -1,0 +1,18 @@
+@import './null';
+@import 'blocks/header';
+@import 'blocks/dashboard';
+@import 'blocks/sidebar';
+
+body {
+    font-family: Arial, sans-serif;
+    background: #B5C2C9;
+    color: #343B48
+    }
+
+.wrapper {
+    margin: 35px 50px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+    max-width: 1000px;
+}
